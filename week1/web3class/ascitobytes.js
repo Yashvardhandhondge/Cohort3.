@@ -1,12 +1,10 @@
-function asciiToBytes(asciiString) {
+function asciitoBytes(asciiString){
     const byteArray = [];
-    for (let i = 0; i < asciiString.length; i++) {
-      byteArray.push(asciiString.charCodeAt(i));
+    for(let i=0;i<asciiString.length;i++){
+        byteArray.push(asciiString.charCodeAt(i));
     }
     return byteArray;
-  }
-  
- 
-  const ascii = "Hello";
-  const byteArray = asciiToBytes(ascii);
-  console.log(byteArray); 
+}
+const ascii = "yash";
+const byteArray = asciitoBytes(ascii);
+console.log(byteArray)
