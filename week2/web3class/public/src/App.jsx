@@ -1,54 +1,46 @@
+import {ethers} from 'ethers';
+import { HDNode } from '@ethersproject/hdnode';
+import { useState } from 'react';
 
+const WalletGenerator = ()=>{
+  const [mnemonic,setMnemonic]= useState('');
+  const [wallets,setWallets]= useState([]);
 
-import React, { useState } from "react";
-import { ethers } from 'ethers';
-import { HDNode } from "@ethersproject/hdnode";
-
-const WalletGenerator = () => {
-  const [mnemonic, setMnemonic] = useState('');
-  const [wallets, setWallets] = useState([]);
-
-  const generateMnemonic = () => {
-    try {
-      const wallet = ethers.Wallet.createRandom();
-      setMnemonic(wallet.mnemonic?.phrase || '');
-    } catch (error) {
-      console.log('Error generating mnemonic:', error);
-    }
+  const generateMnemonic =()=>{
+    const janhavi = ethers.Wallet.createRandom();
+    setMnemonic(janhavi.mnemonic.phrase);
   }
-
-  const addWallet = () => {
-    if (!mnemonic) {
-      alert('Please generate a mnemonic first');
-      return;
-    }
-
-    try {
-      const hdNode = HDNode.fromMnemonic(mnemonic);
-      const path = `m/44'/60'/0'/0/${wallets.length}`;
-      const derivedNode = hdNode.derivePath(path);
-      const wallet = new ethers.Wallet(derivedNode.privateKey);
-      setWallets([...wallets, wallet]);
-    } catch (error) {
-      console.log('Error adding wallet:', error);
-    }
+const addWallet = ()=>{
+  if(!mnemonic){
+    alert('pahila memonic tak');
+    return;
   }
-
-  return (
+  
+  const node = HDNode.fromMnemonic(mnemonic);
+  const path = `m/44'/60'/0'/0/${wallets.length}`;
+  const derived = node.derivePath(path);
+  const wallet = new ethers.Wallet(derived.privateKey);
+  setWallets([...wallets,wallet])
+}
+return (
+  <div>
+    My wallet
     <div>
-      <h1>Your Wallet</h1>
-      <button onClick={generateMnemonic}>Generate Mnemonic</button>
-      {mnemonic && <p>{mnemonic}</p>}
-      <button onClick={addWallet}>Add Wallet</button>
+      <button onClick={generateMnemonic}>Generate button</button>
+      {mnemonic &&<p>{mnemonic}</p> }
+    </div>
+    <div>
+      <button onClick={addWallet}>add your wallet</button>
       <div>
-        {wallets.map((wallet, index) => (
+        {wallets.map((wallet,index)=>(
           <div key={index}>
-            <p>Wallet {index + 1}: {wallet.address}</p>
+            <p>Wallet {index+1}:{wallet.address}</p>
           </div>
         ))}
       </div>
     </div>
-  );
+  </div>
+)
 }
 
 export default WalletGenerator;
