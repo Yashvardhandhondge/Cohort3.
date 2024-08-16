@@ -21,7 +21,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 flex justify-center items-center p-6">
       <div className="bg-white bg-opacity-80 rounded-xl shadow-lg p-8 max-w-2xl w-full">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Blockchain Wallet App</h1>
+          <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Wallet </h1>
           <p className="text-gray-600">Create and manage your blockchain wallets seamlessly.</p>
         </div>
         <div className="text-center mb-8">

@@ -17,7 +17,7 @@ export function SendTransaction({ mnemonic }) {
       const parsedAmount = ethers.parseEther(amount);
     
 
-      const provider = new ethers.JsonRpcProvider('https://rinkeby.infura.io/v3/YOUR_INFURA_PROJECT_ID');
+      const provider = new ethers.JsonRpcProvider('https://mainnet.infura.io/v3/5fdd7d40896c45ca95de195e0aff6a5b');
       const hdNode = HDNode.fromMnemonic(mnemonic);
       const wallet = new ethers.Wallet(hdNode.privateKey, provider);
 
