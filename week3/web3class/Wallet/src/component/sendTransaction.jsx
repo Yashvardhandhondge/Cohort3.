@@ -12,19 +12,16 @@ export function SendTransaction({ mnemonic }) {
     try {
       setError("");
 
-   
-
       const parsedAmount = ethers.parseEther(amount);
-    
-
+      
       const provider = new ethers.JsonRpcProvider('https://mainnet.infura.io/v3/5fdd7d40896c45ca95de195e0aff6a5b');
       const hdNode = HDNode.fromMnemonic(mnemonic);
       const wallet = new ethers.Wallet(hdNode.privateKey, provider);
 
       const txParams = {
         nonce: await wallet.getNonce(),
-        gasLimit: ethers.utils.hexlify(21000),
-        gasPrice: ethers.utils.hexlify(ethers.utils.parseUnits('20', 'gwei')),
+        gasLimit: 21000, 
+        gasPrice: ethers.parseUnits('20', 'gwei'), 
         to: toAddress,
         value: parsedAmount,
       };
