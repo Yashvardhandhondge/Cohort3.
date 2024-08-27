@@ -11,7 +11,8 @@ app.use(express.json());
 app.post('/todos', (req, res) => {
     const { title, description,id } = req.body;
     const newTodo = {
-        id: currentId++, 
+    
+        id:currentId++, 
         title,
         description,
     };
@@ -32,13 +33,13 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
-app.put('/todos/:id', (req, res) => {
-    const index = todos.findIndex(t => t.id == req.params.id);
-    if (index === -1) return res.status(404).json({ error: 'Task not found' });
+app.put('/todos/:id',(req,res)=>{
+    const index = todos.findIndex(t=>t.id == req.params.id);
+    if (index === -1) return res.status(404).json({error:'Task not found'});
 
-    todos[index] = { ...todos[index], ...req.body };
-    res.json(todos[index]);
-});
+    todos[index] = {...todos[index],...req.body};
+    res.json(todos[index])
+})
 
 
 app.delete('/todos/:id', (req, res) => {
@@ -47,6 +48,6 @@ app.delete('/todos/:id', (req, res) => {
 
     todos.splice(index, 1);
     res.status(204).end();
-});
+});0
 
 app.listen(3000);
