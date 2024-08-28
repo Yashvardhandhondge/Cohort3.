@@ -56,7 +56,7 @@ function isthereanyunhealthykideny(){
     return anyoneunhealthykideny;
 }
 app.delete('/',function(req,res){
-    const newkideny =0;
+    const newkideny =[];
     if(isthereanyunhealthykideny()){
         for(let i=0;i<user[0].kidney.length;i++){
             if(user[0].kidney[i].healthy){

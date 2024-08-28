@@ -48,6 +48,6 @@ app.delete('/todos/:id', (req, res) => {
 
     todos.splice(index, 1);
     res.status(204).end();
-});0
+});
 
 app.listen(3000);
