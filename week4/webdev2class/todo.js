@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 app.post('/todos', (req, res) => {
-    const { title, description,id } = req.body;
+    const { title, description } = req.body;
     const newTodo = {
     
         id:currentId++, 
