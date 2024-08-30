@@ -27,7 +27,7 @@ app.get('/janhavi',function(req,res){
 })
 
 app.post('/janhavi',function(req,res){
-    const isHealthy = req.body.isHealthy;
+    const isHealthy = req.body.isHealthy;//{"ishealthy":true}
     user[0].kidney.push({
         healthy:isHealthy===true,
     })
@@ -42,7 +42,8 @@ app.put('/janhavi',function(req,res){
         user[0].kidney[i].healthy=true;
     }
     res.json({
-        msg:"done"
+        msg:"done",
+        kidney:user[0].kidney,
     })
 })
 
@@ -55,6 +56,7 @@ function isthereanyunhealthykideny(){
     } 
     return anyoneunhealthykideny;
 }
+
 app.delete('/',function(req,res){
     const newkideny =[];
     if(isthereanyunhealthykideny()){
@@ -63,7 +65,8 @@ app.delete('/',function(req,res){
              newkideny.push({
                 healthy:true
              })
-            }
+            }//{newkideny:[healthy:true,healthy:true]}
+            //{heathy:true,healthy:true}
         }
         user[0].kidney= newkideny
         res.json({
