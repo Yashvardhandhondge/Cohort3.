@@ -13,9 +13,7 @@ function App() {
                 <WalletModalProvider>
                     <WalletMultiButton />
                     <WalletDisconnectButton />
-                    <div>
-                        Hi there
-                    </div>
+                   
                     <Airdrop />
                 </WalletModalProvider>
             </WalletProvider>
