@@ -1,22 +1,19 @@
 import { generateMnemonic } from "bip39";
-
-import {Buffer} from 'buffer';
 import { useState } from "react";
-
-window.Buffer = window.Buffer || Buffer
-
-function App(){
-  const [mnemonic,setMnemonic]=useState('');
+import { SolanaWallet } from "./components/SolWallet";
+// import { SolanaWallet } from "./components/solwallet2";
+function  App(){
+  const [mnemonic,setMnemonic]=useState('')
 
   return(
     <div>
       <button onClick={async function(){
         const mn = await generateMnemonic();
         setMnemonic(mn)
-      }}>Create seed phrase</button>
+      }}>Create Seed</button>
       <input type="text" value={mnemonic} />
+      <SolanaWallet mnemonic={mnemonic} />
     </div>
   )
 }
-
 export default App
