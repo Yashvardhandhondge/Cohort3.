@@ -3,6 +3,11 @@ import { ConnectionProvider,WalletProvider } from "@solana/wallet-adapter-react"
 import { WalletModalProvider,WalletMultiButton,WalletDisconnectButton } from "@solana/wallet-adapter-react-ui";
 import { Airdrop } from "./Airdrop";
 import '@solana/wallet-adapter-react-ui/styles.css';
+import { ShowBalnace } from "./ShowSolBalnace";
+import { SignMessage } from "./SignMessage";
+import { SendTokens } from "./SendTokens";
+import { Buffer } from 'buffer';
+globalThis.Buffer = Buffer;
 
 function App(){
   return(
@@ -11,8 +16,11 @@ function App(){
         <WalletModalProvider>
           <WalletMultiButton></WalletMultiButton>
           <WalletDisconnectButton></WalletDisconnectButton>
-        </WalletModalProvider>
         <Airdrop></Airdrop>
+        <SignMessage></SignMessage>
+        <ShowBalnace></ShowBalnace>
+        <SendTokens></SendTokens>
+        </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   )
