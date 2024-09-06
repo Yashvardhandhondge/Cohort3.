@@ -24,25 +24,24 @@ export function SolanaWallet({ mnemonic }) {
     };
 
     return (
-        <div className="p-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Solana Wallets</h2>
+        <div >
+            <h2 >Solana Wallets</h2>
             <button
                 onClick={addWallet}
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out"
             >
                 Add Solana Wallet
             </button>
 
-            <div className="mt-6">
+            <div >
                 {publicKeys.length > 0 ? (
                     publicKeys.map((publicKey, index) => (
-                        <div key={index} className="mb-2 p-3 bg-gray-100 rounded-lg shadow-md">
-                            <p className="text-sm text-gray-700">Wallet {index + 1}:</p>
-                            <p className="font-mono text-sm text-gray-900">{publicKey}</p>
+                        <div key={index} >
+                            <p >Wallet {index + 1}:</p>
+                            <p >{publicKey}</p>
                         </div>
                     ))
                 ) : (
-                    <p className="text-gray-600">No wallets added yet.</p>
+                    <p >No wallets added yet.</p>
                 )}
             </div>
         </div>
