@@ -35,6 +35,15 @@ app.post('/signin', (req,res)=>{
 
   const user = users.find(user=>user.username===username && user.password === password);
 
+
+// let founduser= null;
+// for(let i=0;i<users.length;i++){
+//     if(users[i].username == username && users[i].password == password){
+//         founduser = user[i]
+//     }
+// }
+
+//khalychya line asya astya if(founduser){}ani rest logic
   if(user){
     const token = generateToken();
     user.token = token;
@@ -48,7 +57,7 @@ app.post('/signin', (req,res)=>{
     })
   }
 
-
+console.log(users)
 
 })
 
@@ -64,6 +73,7 @@ app.get('/me',(req,res)=>{
             message:"Unauthprized"
         })
     }
+    console.log(users)
 })
 
 app.listen(3000)
