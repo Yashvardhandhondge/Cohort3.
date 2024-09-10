@@ -110,9 +110,31 @@ export function TokenLaunch(){
          className="px-4 py-2 border rounded-md w-80"
          placeholder="Name"
          value={name}
-         onChange={(e)=> setName}
+         onChange={(e)=> setName(e.target.value)}
+        />
+        <input type="text"
+        className="px-4 py-2 border rounded-md w-80"
+        placeholder="Symbol"
+        value={symbol}
+        onChange={(e)=> setSymbol(e.target.value)}
+        />
+        <input type="text"
+        className="px-4 py-2 border rounded-md w-80"
+        placeholder="Image URL"
+        value={uri}
+        onChange={(e)=> setUri(e.target.value)}
+        />
+        <input type="text"
+        className="px-4 py-2 border rounded-md w-80"
+        placeholder="Initial Supply"
+        value={initialSupply}
+        onChange={(e)=>setInitialSupply(Number(e.target.value))}
         />
       </div>
+      <button onClick={createToken} className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg">
+
+        Create Token
+      </button>
     
     </div>
   )
