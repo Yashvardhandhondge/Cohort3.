@@ -57,19 +57,36 @@ app.post('/signin',async function(req,res){
     
 })
 
-app.post('/todo',auth,function(req,res){
-  const userId = req.userId
+app.post('/todo',auth,async function(req,res){
+    try{
+         const title = req.body.title
+        const userId = req.userId
+        const done = req.body.done
+      const Todo = await Todomodel.create({
+        title,
+        done,
+        userId
+      })
+        res.json({
+          userId:userId,
+          Todo
+        })
+    }catch(e){
+      console.error(e)
+    }
+})
+app.get("/todo", auth, async function(req, res) {
+    const userId = req.userId;
 
-  res.json({
-    userId:userId
-  })
-})
-app.get('/todo',function(req,res){
-  const userId = req.userId
-  res.json({
-    userId:userId
-  })
-})
+    const todos = await Todomodel.find({
+        
+        userId
+    });
+
+    res.json({
+        todos
+    })
+});
 
 function auth(req,res,next){
     const token = req.headers.token;
@@ -86,4 +103,6 @@ function auth(req,res,next){
     }
 }
 
-app.listen(3000)
+app.listen(3000,()=>{
+    console.log("App is running on 3000 port")
+})
