@@ -5,7 +5,11 @@ const {Usermodel,Todomodel} = require('./db');
 const { default: mongoose } = require('mongoose');
 const app = express();
 app.use(express.json())
+
+
 mongoose.connect('mongodb+srv://yashvardhandhondge:Yash2005%40@cluster0.jowv6cy.mongodb.net/todo-yash')
+
+
 app.post('/signup',async function(req,res){
     try{
         const email = req.body.email;
@@ -26,6 +30,7 @@ app.post('/signup',async function(req,res){
     }
        
 })
+
 
 app.post('/signin',async function(req,res){
     try{
@@ -62,10 +67,10 @@ app.post('/todo',auth,async function(req,res){
          const title = req.body.title
         const userId = req.userId
         const done = req.body.done
-      const Todo = await Todomodel.create({
-        title,
-        done,
-        userId
+        const Todo = await Todomodel.create({
+         title,
+         done,
+         userId
       })
         res.json({
           userId:userId,
@@ -76,16 +81,21 @@ app.post('/todo',auth,async function(req,res){
     }
 })
 app.get("/todo", auth, async function(req, res) {
-    const userId = req.userId;
+    try{
+        const userId = req.userId;
 
-    const todos = await Todomodel.find({
-        
-        userId
-    });
-
-    res.json({
-        todos
-    })
+        const todos = await Todomodel.find({
+            
+            userId
+        });
+    
+        res.json({
+            todos
+        })
+    }catch(e){
+        console.error(e)
+    }
+  
 });
 
 function auth(req,res,next){
