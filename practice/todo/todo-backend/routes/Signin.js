@@ -1,3 +1,5 @@
+const brcypt = requir('bcrypt')
+const {z} = require('zod')
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { Usermodel } = require('../db');
@@ -7,7 +9,12 @@ const app = express.Router()
 
 app.post('/signin',async function(req,res){
     try{
-
+     const requiredbody = z.object({
+        email: z.string().min(3).max(3).email()
+     })
+     
+     const parseedDataWithSuccess = requiredbody.safeParse(req.body);
+     
         const email = req.body.email;
         const password = req.body.password;
     
