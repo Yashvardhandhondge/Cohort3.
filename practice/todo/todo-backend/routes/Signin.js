@@ -25,11 +25,11 @@ app.post('/signin',async function(req,res){
      }
 
         const email = req.body.email;
-        const password = req.body.password;
+        // const password = req.body.password;
     
       const user =  await Usermodel.findOne({
             email:email,
-            password:password,
+            // password:password,
         })
     
         if(user){

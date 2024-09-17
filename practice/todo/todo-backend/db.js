@@ -12,6 +12,7 @@ const user = new mongoose.Schema({
 const Todo = new mongoose.Schema({
     title: String,
     done: Boolean,
+    description:String,
     userId : ObjectId
 })
 

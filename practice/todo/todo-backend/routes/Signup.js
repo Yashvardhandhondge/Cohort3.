@@ -2,6 +2,7 @@ const express = require('express');
 const { Usermodel } = require('../db');
 const { z } = require('zod');
 const app = express.Router();
+const bcrypt = require('bcrypt');
 
 app.post('/signup',async function(req,res){
     try{
@@ -27,10 +28,12 @@ app.post('/signup',async function(req,res){
         const email = req.body.email;
         const password = req.body.password;
         const name = req.body.name;
+
+        const hashedpassowrd = await bcrypt.hash(password,5)
     
     const user =    await Usermodel.create({
             email:email,
-            password:password,
+            password:hashedpassowrd,
             name:name
         })
     
