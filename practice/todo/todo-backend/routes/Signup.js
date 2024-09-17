@@ -1,9 +1,28 @@
 const express = require('express');
 const { Usermodel } = require('../db');
+const { z } = require('zod');
 const app = express.Router();
 
 app.post('/signup',async function(req,res){
     try{
+         
+        const requiredbody = z.object({
+            email:z.string().min(3).max(100).email(),
+            password: z.string().min(3).max(100),
+            name:z.string().min(3).max(30)
+        })
+
+        const parsedbody = requiredbody.safeParse(req.body);
+
+        if(!parsedbody.success){
+            res.json({
+                message:"You have entered worng credentials",
+                error: parsedbody.error
+            })
+            return
+        }
+
+
 
         const email = req.body.email;
         const password = req.body.password;
