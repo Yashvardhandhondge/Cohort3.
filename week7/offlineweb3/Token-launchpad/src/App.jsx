@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div className="bg-zinc-500 min-h-screen">
-      <ConnectionProvider endpoint={"https://solana-mainnet.g.alchemy.com/v2/DEhoo-faZJyJO03UWMXSsKycjKrK_w9G"}>
+      <ConnectionProvider endpoint={"https://solana-devnet.g.alchemy.com/v2/DEhoo-faZJyJO03UWMXSsKycjKrK_w9G"}>
       <WalletProvider wallets={[]} autoConnect>
       <WalletModalProvider>
       <WalletMultiButton />
